@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InsideDani Music</title>
+<title>Music</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
     * {
@@ -16,7 +16,7 @@
         font-family: 'Roboto', sans-serif;
         color: #fff;
         overflow-x: hidden;
-        background: linear-gradient(-45deg, #d71e9d, #a3307a, #e84acb, #b5459d);
+        background: linear-gradient(-45deg, #d71e9d, #a0197a, #7b115d, #d751c1);
         background-size: 400% 400%;
         animation: gradientBG 15s ease infinite;
     }
@@ -29,21 +29,20 @@
 
     header {
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
-        height: 25vh;
+        align-items: center;
+        height: 30vh;
         text-align: center;
+        flex-direction: column;
         text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
-        margin-bottom: 1rem;
     }
 
     header h1 {
         font-family: 'Montserrat', sans-serif;
         font-size: 3rem;
-        color: rgba(255,255,255,0.95);
-        animation: fadeInDown 1.5s ease forwards;
         margin-bottom: 1rem;
+        color: rgba(255,255,255,0.95);
+        animation: fadeInDown 2s ease forwards;
     }
 
     @keyframes fadeInDown {
@@ -51,90 +50,44 @@
         100% {opacity:1; transform: translateY(0);}
     }
 
-    header img {
-        max-width: 300px;
-        border-radius: 10px;
-        margin-bottom: 1rem;
-    }
-
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin: 1rem 0;
-        flex-wrap: wrap;
-    }
-
-    nav a {
-        text-decoration: none;
-        color: #d71e9d;
-        font-weight: bold;
-        background-color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: transform 0.2s, background-color 0.2s;
-    }
-
-    nav a:hover {
-        background-color: #ff88ff;
-        transform: translateY(-3px);
-    }
-
     main {
-        max-width: 1000px;
-        margin: 0 auto 3rem;
+        max-width: 900px;
+        margin: 2rem auto;
         padding: 0 1rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
     }
 
-    .music-card {
-        background: rgba(0,0,0,0.3);
-        border-radius: 15px;
-        overflow: hidden;
-        padding: 1rem;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .music-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-    }
-
-    .music-card iframe {
-        width: 100%;
-        height: 200px;
-        border: none;
-        margin-bottom: 0.5rem;
+    main img {
+        display: block;
+        margin: 0 auto 2rem auto;
+        max-width: 200px;
         border-radius: 10px;
     }
 
-    .music-card p {
+    main p {
+        margin-bottom: 1.5rem;
+        line-height: 1.5rem;
+    }
+
+    iframe {
+        display: block;
+        margin: 0 auto 2rem auto;
+        max-width: 100%;
+        height: 315px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    a {
+        display: inline-block;
+        margin: 1rem 1rem 2rem 0;
+        text-decoration: none;
+        color: #ffb6f1;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
         color: #fff;
-        font-weight: 500;
-        text-align: left;
-        line-height: 1.4;
-        margin-bottom: 0.5rem;
-    }
-
-    footer {
-        text-align: center;
-        padding: 1rem 0;
-        font-size: 0.9rem;
-        color: rgba(255,255,255,0.7);
-    }
-
-    @media(max-width: 600px){
-        header h1 {
-            font-size: 2rem;
-        }
-
-        .music-card iframe {
-            height: 180px;
-        }
     }
 
 </style>
@@ -146,58 +99,40 @@
     <img src="img/cat-cat-meme.gif" alt="vibin">
 </header>
 
-<nav>
-    <a href="https://www.insidedani.com">[BACK]</a>
-    <a href="https://www.insidedani.com/music2">[>>>]</a>
-</nav>
-
 <main>
-    <div class="music-card">
-        <p><strong>Little Dark Age - MGMT</strong></p>
-        <iframe src="https://www.youtube.com/embed/rtL5oMyBHPs" allowfullscreen></iframe>
-        <p>Very eerie song but when the chorus hits, it's like fireworks.</p>
-    </div>
+<a href="https://www.insidedani.com">[BACK]</a>
 
-    <div class="music-card">
-        <p><strong>You & Me - Disclosure</strong></p>
-        <iframe src="https://www.youtube.com/embed/ETEg-SB01QY" allowfullscreen></iframe>
-        <p>The energy is so strong and the message is very clear.</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">Little Dark Age - MGMT</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rtL5oMyBHPs"></iframe>
+<p>Very eerie song but when the chorus hits, it's like fireworks.</p>
 
-    <div class="music-card">
-        <p><strong>The Salmon Dance - The Chemical Brothers</strong></p>
-        <iframe src="https://www.youtube.com/embed/dDj7DuHVV9E" allowfullscreen></iframe>
-        <p>I feel like someone showed me this a while ago back in high school.</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">You & Me - Disclosure</p>
+<iframe width="560" height="315" src="https://youtu.be/OUkkaqSNduU?si=mAU94eLlaS7HEpIV"></iframe>
+<p>The energy is so strong and the message is very clear.</p>
 
-    <div class="music-card">
-        <p><strong>Use of Time - 311</strong></p>
-        <iframe src="https://www.youtube.com/embed/A5d69kQsKzo" allowfullscreen></iframe>
-        <p>Riley played me this one in that old red sedan he had while we were both totally toasted.</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">The Salmon Dance - The Chemical Brothers</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dDj7DuHVV9E"></iframe>
+<p>I feel like someone showed me this a while ago back in high school.</p>
 
-    <div class="music-card">
-        <p><strong>Doses & Mimosas</strong></p>
-        <iframe src="https://www.youtube.com/embed/E45fogGN_Y8" allowfullscreen></iframe>
-        <p>Butch played me this one in Fayetteville and it's always stuck.</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">Use of Time - 311</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/A5d69kQsKzo"></iframe>
+<p>Riley played me this one in that old red sedan he had while we were both totally toasted.</p>
 
-    <div class="music-card">
-        <p><strong>The Adults Are Talking - The Strokes</strong></p>
-        <iframe src="https://www.youtube.com/embed/ewOPQZZn4SY" allowfullscreen></iframe>
-        <p>Not much on this one, just like how chill it is.</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">Doses & Mimosas</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E45fogGN_Y8"></iframe>
+<p>Butch played me this one in Fayetteville and it's always stuck.</p>
 
-    <div class="music-card">
-        <p><strong>Fold Ya' Up Like A Blanket - Enjoy</strong></p>
-        <iframe src="https://www.youtube.com/embed/gYHsfcRU5x8" allowfullscreen></iframe>
-        <p>'Cause I'm the king of the crop,I'm the crème de la crème I'm the queen of the crown, I'm the crop to the crop And I'm not gonna stop, So go fuck right off</p>
-    </div>
+<p style="color: hsla(0, 0%, 100%, 0.526);">The Adults Are Talking - The Strokes</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ewOPQZZn4SY"></iframe>
+<p>Not much on this one, just like how chill it is.</p>
+
+<p style="color: hsla(0, 0%, 100%, 0.526);">Fold Ya' Up Like A Blanket - Enjoy</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gYHsfcRU5x8"></iframe>
+<p>'Cause I'm the king of the crop, I'm the crème de la crème I'm the queen of the crown, I'm the crop to the crop And I'm not gonna stop, So go fuck right off</p>
+
+<a href="https://www.insidedani.com/music">[<<<]</a>
+<a href="https://www.insidedani.com/music2">[>>>]</a>
+
 </main>
-
-<footer>
-    <p>© InsideDani Music</p>
-</footer>
-
 </body>
 </html>
