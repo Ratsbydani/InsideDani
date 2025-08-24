@@ -1,122 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
-    <style>
-        .flex-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20vh; /* Full viewport height */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InsideDani Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+        background: linear-gradient(-45deg, #d71e9d, #a3307a, #e84acb, #b5459d);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25vh;
+        text-align: center;
+        flex-direction: column;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        color: rgba(255,255,255,0.95);
+        animation: fadeInDown 1.5s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+        0% {opacity:0; transform: translateY(-30px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #d71e9d;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    nav a:hover {
+        background-color: #ff88ff;
+        transform: translateY(-3px);
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .music-card {
+        background: rgba(0,0,0,0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .music-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+    }
+
+    .music-card img {
+        max-width: 100%;
+        display: block;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .music-card iframe {
+        width: 100%;
+        height: 200px;
+        border: none;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .music-card p {
+        color: #fff;
+        font-weight: 500;
+        text-align: left;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width: 600px){
+        header h1 {
+            font-size: 2rem;
         }
-        body {
-            background-color: rgb(215, 30, 157)
+
+        .music-card iframe {
+            height: 180px;
         }
-    </style>
+    }
+
+</style>
 </head>
 <body>
-    <div class="flex-container">
-        <div><h1 style="color: hsla(0, 0%, 100%, 0.526);">Music Taste</h1></div>
+
+<header>
+    <h1>InsideDani Music</h1>
+</header>
+
+<nav>
+    <a href="https://www.insidedani.com">BACK</a>
+</nav>
+
+<main>
+    <div class="music-card">
+        <p style="font-weight:bold;">Sp33din'/Swallowed My Key - Slater</p>
+        <iframe src="https://www.youtube.com/embed/PPWRREK2Mzg" allowfullscreen></iframe>
+        <p>Two songs in one video. Both of which are great to just cruise around listening to. Sets the vibes for a night cruise. Slater was my top artist of 2024 on Spotify.</p>
     </div>
+
+    <div class="music-card">
+        <p style="font-weight:bold;">Aqueous Transmission - Incubus</p>
+        <iframe src="https://www.youtube.com/embed/BQZ624p4uGU" allowfullscreen></iframe>
+        <p>The way the song flows like water is beautiful. Incubus was my top artist for 2023 on Spotify.</p>
+    </div>
+
+    <div class="music-card">
+        <p style="font-weight:bold;">What Once Was - Her's</p>
+        <iframe src="https://www.youtube.com/embed/O-B-BBwfAWU" allowfullscreen></iframe>
+        <p>Super unique indie song, deep lyrics. Reflects on holding onto something you can’t have anymore.</p>
+    </div>
+
+    <div class="music-card">
+        <p style="font-weight:bold;">Turkey - Clock Tower (full album)</p>
+        <iframe src="https://www.youtube.com/embed/D4nCrSQVCVA" allowfullscreen></iframe>
+        <p>Found this on my For You page on 1/28/2025. Really like the vibe.</p>
+    </div>
+
+    <div class="music-card">
+        <p style="font-weight:bold;">Cemetery Gates - Pantera</p>
+        <iframe src="https://www.youtube.com/embed/RVMvART9kb8" allowfullscreen></iframe>
+        <p>The first song I ever called my favorite. Memorable experiences and concerts attached to it.</p>
+    </div>
+
+    <!-- Add additional music cards in the same format -->
+    
+    <div class="music-card">
+        <p style="font-weight:bold;">More Music...</p>
+        <a href="https://www.insidedani.com/music1" target="_blank" style="color:#d71e9d; font-weight:bold; text-decoration:underline;">Next Page &gt;&gt;&gt;</a>
+    </div>
+
+</main>
+
+<footer>
+    &copy; 2025 InsideDani. All rights reserved.
+</footer>
+
 </body>
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<a href="https://www.insidedani.com">[BACK]</a>
-<p style="color: hsla(0, 0%, 100%, 0.526);">Sp33din'/Swallowed My Key - Slater</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PPWRREK2Mzg"></iframe>
-<p>Two songs in one video. Both of which are great to just cruise around listening to. For me, it really sets the vibes right for a night cruise. It's something about the energy that these two songs give off, very indie and have a solid beat. Slater was my top artist of 2024 on Spotify and to me it's very clear as to why.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Aqueous Transmission - Incubus</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BQZ624p4uGU"></iframe>
-<p>This song is incredibly unique. The way the song seems to flow like water the entire time is beautiful. Incubus was my top artist for 2023 on Spotify.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">What Once Was - Her's</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/O-B-BBwfAWU"></iframe>
-<p>Yet another unique indie song, and my favorite as well. This song is actually super deep. The song is named "What Once Was" which perfectly mirrors the lyrics. My favoite lyrics read, "Baby, I've been there before, I was at the point where all I really wanted was someone, And now I'm still hanging on, I was at the end of every tether waiting for what once was." I think a lot of us can actually relate to this snippet. Holding onto the fraying tether of something or someone wishing you could have what once was.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Turkey - Clock Tower(full album)</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/D4nCrSQVCVA"></iframe>
-<p>I found this on my for you page on 1/28/2025 and I really like the vibe. Just a little something I added to show off more of my taste.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Cemetery Gates - Pantera</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RVMvART9kb8"></iframe>
-<p>This was the first song that I ever deemed my "Favorite". I remember the first time I heard it in my dad's truck back when we lived in South Dakota. The next day at school I asked everyone in my class if they had heard of it, most saying no so when we had computer lab I looked it up to show off to my friends lol. I got to see these guys in concert at the Walmart AMP which was really something. Sadly we had to leave a little early because I had Jude with me and he didn't want to stick around any longer so I said K.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Lazy Eye - Silversun Pickups</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/z-mxBDuRaZ8"></iframe>
-<p>I was actually shown this song by Jude. I think he introduced me to it as his dead mom's favorite song.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Sex Tape - Deftones</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/f0pdwd0miqs"></iframe>
-<p>I need to see Deftones Live. Ben put me onto Deftones back in 10th grade I think. I've got him to thank for a lot of my music taste actually. He ALWAYS had the bangers every damn time. I love the floaty feeling this song gives off, the way it never gets too agressive and stays floaty makes me very happy.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Locket - Crumb</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BqnG_Ei35JE"></iframe>
-<p>Crumb has this way of making the most ethereal songs. I cannot even begin to describe their music taste it's just so damn unique.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Ghostride - Crumb</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HS4aJ_51qNQ"></iframe>
-<p>Another Crumb song yes. This was the first one I've ever heard by them.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Harder, Better, Faster, Stronger - Daft Punk</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gAjR4_CbPpQ"></iframe>
-<p>This one just hits by ears the right way. Can't pinpoint but it's a classic.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Messy - Lola Young</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k-k2_Liofy8"></iframe>
-<p>I can't entirely relate to this one but the flow is peak. Just a good powerful song.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Owner of a Lonely Heart - yes</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AY7ktU1Db2A"></iframe>
-<p>Classic.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Sit Next to Me - Foster the People</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/lY_0mkYDZDU"></iframe>
-<p>7 years ago... wow.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Ppl - camoufly</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/c_PglJxOqFE"></iframe>
-<p>This song holds a gun to my head and tells me to dance.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">CUTE DEPRESSED - Dyan Dxddy</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/abwf-BdPFsQ"></iframe>
-<p>Really couldn't tell you why like at all. Just enjoy it.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Jesus Wants Me For A Sunbeam - The Vaselines</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/t-AvJTeQ4hQ"></iframe>
-<p>Nirvana tried but they just can't compete</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Sleepyhead - Passion Pit</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T0RvPYRRRbE"></iframe>
-<p>Another one that just blesses my ears.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Daylight - Matt and Kim</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WgBeu3FVi60"></iframe>
-<p>Their music doesn't really make a whole lot of sense but it's very up-beat and empowering.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">I Will Possess Your Heart - Death Cab For Cutie</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h6v6MyVh6Aw"></iframe>
-<p>The way the Guitar and Piano parts dance together is on fleek</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Breaking The Girl - Red Hot Chili Peppers</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iyu04pqC8lE"></iframe>
-<p>I honestly really relate to this song. The main meaning of this song is toxic patterns in relationships and exploring themes of love, betrayal, and self-reflection. He acknowledges hurting someone he cared about when Anthony sings "She was the girl I loved the most". The song's melody and dynamic shifts mirror the emotional highs and lows of the relationship, creating a sense of vulnerability and regret. Fuckin love this guy.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Evergreen - Richy Mitch & The Coal Miners</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/h2BIuhiL4o0"></iframe>
-<p>Locked in a Stalemate with a man who bars no holds. Rock and a hard place, he's battering control. What am I waiting for? Feet planted beneath. My compass, my transport.   The song touches on being in a negative cycle. This is the song that best describes my dating life sadly but at least I'm aware. It's about wanting to change and do better but you keep holding yourself back and doing the same things. I gave Justina the nickname Evergreen but never used it.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Useless - Omar Apollo</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WmfvoZqE6aY"></iframe>
-<p>I think a lot of people understand this song pretty well. There's been a good handful of women that render me useless, left in thought about wanting them and being lead on. That's not the only meaning though. This song can also be about feeling useless in a relationship because the love is not reciprocated. No matter what they do, they can't make the other person love them back. </p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Egg - The Garden</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/37l2J2IMfd4"></iframe>
-<p>I don't know if the twins actually had an idea in mind for the theme of this one but I love that piano god Danm. I guess you could say it's about the pressures of individuality in a society that tries to box people in especially because these guys own Vada Vada which is a music label for unique artists.</p>
-
-<a href="https://www.insidedani.com/music1">[>>>]</a>
-
 </html>
