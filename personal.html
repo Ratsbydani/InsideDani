@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InsideDani</title>
+<title>InsideDani Renders</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <style>
     * {
@@ -16,7 +16,7 @@
         font-family: 'Roboto', sans-serif;
         color: #fff;
         overflow-x: hidden;
-        background: linear-gradient(-45deg, #53a46f, #2c8a4d, #1b4f2e, #4caf91);
+        background: linear-gradient(-45deg, #50394e, #6b4f77, #80588c, #4b3754);
         background-size: 400% 400%;
         animation: gradientBG 15s ease infinite;
     }
@@ -31,7 +31,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 40vh;
+        height: 25vh;
         text-align: center;
         flex-direction: column;
         text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
@@ -39,16 +39,9 @@
 
     header h1 {
         font-family: 'Montserrat', sans-serif;
-        font-size: 4rem;
-        margin-bottom: 1rem;
+        font-size: 3rem;
         color: rgba(255,255,255,0.95);
-        animation: fadeInDown 2s ease forwards;
-    }
-
-    header p {
-        font-size: 1.2rem;
-        max-width: 600px;
-        animation: fadeInUp 2s ease forwards;
+        animation: fadeInDown 1.5s ease forwards;
     }
 
     @keyframes fadeInDown {
@@ -56,98 +49,138 @@
         100% {opacity:1; transform: translateY(0);}
     }
 
-    @keyframes fadeInUp {
-        0% {opacity:0; transform: translateY(30px);}
-        100% {opacity:1; transform: translateY(0);}
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #50394e;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    nav a:hover {
+        background-color: #ffd700;
+        transform: translateY(-3px);
     }
 
     main {
-        max-width: 1000px;
-        margin: 2rem auto;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
         padding: 0 1rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
     }
 
-    .card {
+    .render-card {
         background: rgba(0,0,0,0.3);
-        padding: 2rem 1rem;
         border-radius: 15px;
+        overflow: hidden;
         text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .card:hover {
+    .render-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 15px 25px rgba(0,0,0,0.4);
     }
 
-    .card h2 {
-        font-family: 'Montserrat', sans-serif;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        color: #fff;
-        text-shadow: 0 0 5px #000;
+    .render-card img {
+        width: 100%;
+        display: block;
     }
 
-    .card a {
-        display: inline-block;
-        margin-top: 0.5rem;
-        text-decoration: none;
-        color: #53a46f;
+    .render-card p {
+        padding: 0.5rem 1rem 1rem;
         font-weight: bold;
-        transition: color 0.3s ease;
-    }
-
-    .card a:hover {
-        color: #a8f0c6;
+        color: #fff;
+        text-shadow: 1px 1px 2px #000;
     }
 
     footer {
-        margin-top: 3rem;
-        padding: 1rem 0;
         text-align: center;
+        padding: 1rem 0;
         font-size: 0.9rem;
         color: rgba(255,255,255,0.7);
     }
 
     @media(max-width: 600px){
         header h1 {
-            font-size: 2.5rem;
-        }
-
-        header p {
-            font-size: 1rem;
+            font-size: 2rem;
         }
     }
+
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to InsideDani</h1>
-    <p>A space that contains everything inside my head. Understand me through my creations. Started January 25th, 2025.</p>
+    <h1>InsideDani Renders</h1>
 </header>
 
+<nav>
+    <a href="https://www.insidedani.com">BACK</a>
+    <a href="https://www.instagram.com/danis_art_stuff/">INSTA</a>
+</nav>
+
 <main>
-    <div class="card">
-        <h2>A GAME BY ME</h2>
-        <a href="https://dani-rat.itch.io/fighter" target="_blank">Play Now</a>
+    <div class="render-card">
+        <img src="img/mountain blade boomerang.gif" alt="mountain blade gif">
+        <p>Mountain Blade Boomerang</p>
     </div>
-    <div class="card">
-        <h2>My D&D</h2>
-        <a href="https://www.worldanvil.com/w/thalora-ratzbydani" target="_blank">Explore</a>
+    <div class="render-card">
+        <img src="img/mountain blade(2inx3in).jpg" alt="mountain blade img">
+        <p>Mountain Blade</p>
     </div>
-    <div class="card">
-        <h2>RENDERS</h2>
-        <a href="https://www.insidedani.com/renders" target="_blank">View</a>
+    <div class="render-card">
+        <img src="img/abstract gems_day(2inx2in).jpg" alt="gems day">
+        <p>Abstract Gems (Day)</p>
     </div>
-    <div class="card">
-        <h2>MUSIC</h2>
-        <a href="https://www.insidedani.com/music" target="_blank">Listen</a>
+    <div class="render-card">
+        <img src="img/abstract gems_night(2inx2in).jpg" alt="gems night">
+        <p>Abstract Gems (Night)</p>
+    </div>
+    <div class="render-card">
+        <img src="img/forbidden realm.png" alt="forbidden">
+        <p>Forbidden Realm</p>
+    </div>
+    <div class="render-card">
+        <img src="img/lake dock.png" alt="lake dock">
+        <p>Lake Dock</p>
+    </div>
+    <div class="render-card">
+        <img src="img/meadow of floating isles.png" alt="floating isles">
+        <p>Meadow of Floating Isles</p>
+    </div>
+    <div class="render-card">
+        <img src="img/maze of the golden tree.png" alt="golden maze">
+        <p>Maze of the Golden Tree</p>
+    </div>
+    <div class="render-card">
+        <img src="img/ocean monument.png" alt="ocean monument">
+        <p>Ocean Monument</p>
+    </div>
+    <div class="render-card">
+        <img src="img/bladesNskulls_Day(2inx3in).jpg" alt="skulls day">
+        <p>Blades & Skulls (Day)</p>
+    </div>
+    <div class="render-card">
+        <img src="img/bladesNskulls_Night(2inx3in).jpg" alt="skulls night">
+        <p>Blades & Skulls (Night)</p>
+    </div>
+    <div class="render-card">
+        <img src="img/golden reflections(3inx3in).jpg" alt="golden reflections">
+        <p>Golden Reflections</p>
     </div>
 </main>
 
