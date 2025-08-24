@@ -1,114 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
-    <style>
-        .flex-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20vh; /* Full viewport height */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InsideDani Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+        background: linear-gradient(-45deg, #d71e9d, #a3307a, #e84acb, #b5459d);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 25vh;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
+        margin-bottom: 1rem;
+    }
+
+    header h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        color: rgba(255,255,255,0.95);
+        animation: fadeInDown 1.5s ease forwards;
+        margin-bottom: 1rem;
+    }
+
+    @keyframes fadeInDown {
+        0% {opacity:0; transform: translateY(-30px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+    header img {
+        max-width: 300px;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #d71e9d;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    nav a:hover {
+        background-color: #ff88ff;
+        transform: translateY(-3px);
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .music-card {
+        background: rgba(0,0,0,0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .music-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+    }
+
+    .music-card iframe {
+        width: 100%;
+        height: 200px;
+        border: none;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .music-card p {
+        color: #fff;
+        font-weight: 500;
+        text-align: left;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width: 600px){
+        header h1 {
+            font-size: 2rem;
         }
-        body {
-            background-color: rgb(215, 30, 157)
+
+        .music-card iframe {
+            height: 180px;
         }
-    </style>
+    }
+
+</style>
 </head>
 <body>
-    <div class="flex-container">
-        <div><h1 style="color: hsla(0, 0%, 100%, 0.526);">Music Taste</h1></div>
+
+<header>
+    <h1>InsideDani Music</h1>
+    <img src="img/cat-cat-meme.gif" alt="vibin">
+</header>
+
+<nav>
+    <a href="https://www.insidedani.com/music">[<<<]</a>
+    <a href="https://www.insidedani.com/music2">[>>>]</a>
+</nav>
+
+<main>
+    <div class="music-card">
+        <p><strong>Duvet - Bôa</strong></p>
+        <iframe src="https://www.youtube.com/embed/Uoox9fpmDP0" allowfullscreen></iframe>
+        <p>I never really listen to the lyrics cause they just sound like another instrument, especially in this song. It's been a favorite for years.</p>
     </div>
-</body>
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<a href="https://www.insidedani.com">[BACK]</a>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Duvet - Bôa</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Uoox9fpmDP0"></iframe>
-<p>I never really listen to the lyrics cause they just sound like another instrument especially in this song. It's been a favorite of mine for the past 4ish years now I think.</p>
+    <div class="music-card">
+        <p><strong>Tek It - Cafuné</strong></p>
+        <iframe src="https://www.youtube.com/embed/7RWbq-lbBlk" allowfullscreen></iframe>
+        <p>The beat and flow of this song are catchy and fun, perfect for vibing.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Tek It - Cafuné</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7RWbq-lbBlk"></iframe>
-<p>IIIIIIIII WATCH THE MOOOOOOOON</p>
+    <div class="music-card">
+        <p><strong>Oblivion - Grimes</strong></p>
+        <iframe src="https://www.youtube.com/embed/JtH68PJIQLE" allowfullscreen></iframe>
+        <p>Unique sound and energy make this track stand out to me.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Oblivion - Grimes</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JtH68PJIQLE"></iframe>
-<p>She's hot and so is her music lmao</p>
+    <div class="music-card">
+        <p><strong>Walking On A Dream - Empire Of The Sun</strong></p>
+        <iframe src="https://www.youtube.com/embed/eimgRedLkkU" allowfullscreen></iframe>
+        <p>One of a kind band with an unforgettable vibe.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Walking On A Dream - Empire Of The Sun</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eimgRedLkkU"></iframe>
-<p>One of a kind band right here.</p>
+    <div class="music-card">
+        <p><strong>Gooey - Glass Animals</strong></p>
+        <iframe src="https://www.youtube.com/embed/IIA1XQnAv5s" allowfullscreen></iframe>
+        <p>Interesting textures and layered sounds make this song captivating.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Gooey - Glass Animals</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IIA1XQnAv5s"></iframe>
-<p>(Weirdest music I've ever seen)I saw these guys live at the Walmart AMP with Tom and Kristina. One of the weirdest experiences in my life. We ate some of my homemade chocolate before the concert.</p>
+    <div class="music-card">
+        <p><strong>Lady (Hear Me Tonight) - Modjo</strong></p>
+        <iframe src="https://www.youtube.com/embed/mMfxI3r_LyA" allowfullscreen></iframe>
+        <p>Groovy and smooth, a classic feel-good track.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Lady(Hear Me Tonight) - Modjo</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mMfxI3r_LyA"></iframe>
-<p>Groooovyyyyy</p>
+    <div class="music-card">
+        <p><strong>Never Be Like You feat. Kai - Flume</strong></p>
+        <iframe src="https://www.youtube.com/embed/Ly7uj0JwgKg" allowfullscreen></iframe>
+        <p>The rhythm and energy keep me coming back to this song.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Never Be Like You feat. Kai - Flume</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ly7uj0JwgKg"></iframe>
-<p>WOM WOM WOM</p>
+    <div class="music-card">
+        <p><strong>Mary - Alex G</strong></p>
+        <iframe src="https://www.youtube.com/embed/INaXwbgvGVc" allowfullscreen></iframe>
+        <p>Simple and emotional, I love the feel of this track.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Mary - Alex G</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/INaXwbgvGVc"></iframe>
-<p>Mary is the only girl that I keep coming back to. She's been my girl since 16.</p>
+    <div class="music-card">
+        <p><strong>THem Changes - Thundercat</strong></p>
+        <iframe src="https://www.youtube.com/embed/BuzJ5NArvgw" allowfullscreen></iframe>
+        <p>Wobbly and experimental sound that really draws me in.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">THem Changes - Thundercat</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BuzJ5NArvgw"></iframe>
-<p>Wobbly song</p>
+    <div class="music-card">
+        <p><strong>505 - Arctic Monkeys</strong></p>
+        <iframe src="https://www.youtube.com/embed/KfEEm4Zx-EU" allowfullscreen></iframe>
+        <p>Passionate and atmospheric, a song I always return to.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">505 - Arctic Monkeys</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KfEEm4Zx-EU"></iframe>
-<p>It's so passionate I love themmm <3</p>
+    <div class="music-card">
+        <p><strong>Amber - 311</strong></p>
+        <iframe src="https://www.youtube.com/embed/SUFSB2plwzM" allowfullscreen></iframe>
+        <p>Chill vibe and memorable melodies, makes it a favorite.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Amber - 311</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SUFSB2plwzM"></iframe>
-<p>This is one that Riley put me onto back at the Bentonville Gusanos. Love these guys.</p>
+    <div class="music-card">
+        <p><strong>Iris - Goo Goo Dolls</strong></p>
+        <iframe src="https://www.youtube.com/embed/NdYWuo9OFAw" allowfullscreen></iframe>
+        <p>Classic emotional rock track that resonates deeply.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Iris - Goo Goo Dolls</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NdYWuo9OFAw"></iframe>
-<p>And I'd give up forever to touch you, cause I know that you feel me somehow.</p>
+    <div class="music-card">
+        <p><strong>Creep - Radiohead</strong></p>
+        <iframe src="https://www.youtube.com/embed/XFkzRNyygfk" allowfullscreen></iframe>
+        <p>Raw and powerful, always sticks with me.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Creep - Radiohead</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XFkzRNyygfk"></iframe>
-<p>Too much radio, not enough head. What the hell am I doin here? My dad used to tell me as a child that if I learned to play this song on my accoustic that I'd get all the girls in college haha.</p>
+    <div class="music-card">
+        <p><strong>I Write Sins Not Tragedies - Panic! At The Disco</strong></p>
+        <iframe src="https://www.youtube.com/embed/vc6vs-l5dkc" allowfullscreen></iframe>
+        <p>Energetic and catchy, a track that never gets old.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">I Write SIns Not Tragedies - Panic! At The Disco</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vc6vs-l5dkc"></iframe>
-<p>You Already Know.</p>
+    <div class="music-card">
+        <p><strong>Toy Boy - Stuck in the Sound</strong></p>
+        <iframe src="https://www.youtube.com/embed/CZw5mBM4PMU" allowfullscreen></iframe>
+        <p>High energy indie track that keeps me hooked.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Toy Boy - Stuck in the Sound</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CZw5mBM4PMU"></iframe>
-<p>Jude put me onto them and this has to be my favorite so far.</p>
+    <div class="music-card">
+        <p><strong>Where Is My Mind - Pixies</strong></p>
+        <iframe src="https://www.youtube.com/embed/49FB9hhoO6c" allowfullscreen></iframe>
+        <p>Iconic sound with a timeless alternative vibe.</p>
+    </div>
 
-<p style="color: hsla(0, 0%, 100%, 0.526);">Where Is My Mind - Pixies</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/49FB9hhoO6c"></iframe>
-<p>Somehow relatable. Always been a favorite.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Harness Your Hopes - Pavement</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/w2Ww_O3ceKU"></iframe>
-<p>Show me a word that rhymes with pavement.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Change(In The House Of Flies) - Deftones</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WPpDyIJdasg"></iframe>
-<p>Another great Deftones song. I will be showing my kids all of this.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Pink Pony Club - Chappel Roan</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GR3Liudev18"></iframe>
-<p>God what have you done</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Scott Pilgrim V. My Gpa - Mom Jeans. </p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xxy0aP5m03c"></iframe>
-<p>But I've given up on luck, But I'm happy here, I'm happy here.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<a href="https://www.insidedani.com/music">[<<<]</a>
-<a href="https://www.insidedani.com/music2">[>>>]</a>
-<p></p>
-</html>
+    <div class="music-card">
+        <p
