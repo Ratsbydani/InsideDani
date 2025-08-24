@@ -1,113 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
-    <style>
-        .flex-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 20vh; /* Full viewport height */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InsideDani Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        color: #fff;
+        overflow-x: hidden;
+        background: linear-gradient(-45deg, #d71e9d, #a3307a, #e84acb, #b5459d);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+        0% {background-position: 0% 50%;}
+        50% {background-position: 100% 50%;}
+        100% {background-position: 0% 50%;}
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 25vh;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3);
+        margin-bottom: 1rem;
+    }
+
+    header h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3rem;
+        color: rgba(255,255,255,0.95);
+        animation: fadeInDown 1.5s ease forwards;
+        margin-bottom: 1rem;
+    }
+
+    @keyframes fadeInDown {
+        0% {opacity:0; transform: translateY(-30px);}
+        100% {opacity:1; transform: translateY(0);}
+    }
+
+    header img {
+        max-width: 300px;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem 0;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #d71e9d;
+        font-weight: bold;
+        background-color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s, background-color 0.2s;
+    }
+
+    nav a:hover {
+        background-color: #ff88ff;
+        transform: translateY(-3px);
+    }
+
+    main {
+        max-width: 1000px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .music-card {
+        background: rgba(0,0,0,0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .music-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+    }
+
+    .music-card iframe {
+        width: 100%;
+        height: 200px;
+        border: none;
+        margin-bottom: 0.5rem;
+        border-radius: 10px;
+    }
+
+    .music-card p {
+        color: #fff;
+        font-weight: 500;
+        text-align: left;
+        line-height: 1.4;
+        margin-bottom: 0.5rem;
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.9rem;
+        color: rgba(255,255,255,0.7);
+    }
+
+    @media(max-width: 600px){
+        header h1 {
+            font-size: 2rem;
         }
-        body {
-            background-color: rgb(215, 30, 157)
+
+        .music-card iframe {
+            height: 180px;
         }
-    </style>
+    }
+
+</style>
 </head>
 <body>
-    <div class="flex-container">
-        <div><h1 style="color: hsla(0, 0%, 100%, 0.526);">Music Taste</h1></div>
+
+<header>
+    <h1>Music Taste</h1>
+    <img src="img/cat-cat-meme.gif" alt="vibin">
+</header>
+
+<nav>
+    <a href="https://www.insidedani.com">[BACK]</a>
+    <a href="https://www.insidedani.com/music2">[>>>]</a>
+</nav>
+
+<main>
+    <div class="music-card">
+        <p><strong>Little Dark Age - MGMT</strong></p>
+        <iframe src="https://www.youtube.com/embed/rtL5oMyBHPs" allowfullscreen></iframe>
+        <p>Very eerie song but when the chorus hits, it's like fireworks.</p>
     </div>
+
+    <div class="music-card">
+        <p><strong>You & Me - Disclosure</strong></p>
+        <iframe src="https://www.youtube.com/embed/ETEg-SB01QY" allowfullscreen></iframe>
+        <p>The energy is so strong and the message is very clear.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>The Salmon Dance - The Chemical Brothers</strong></p>
+        <iframe src="https://www.youtube.com/embed/dDj7DuHVV9E" allowfullscreen></iframe>
+        <p>I feel like someone showed me this a while ago back in high school.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Use of Time - 311</strong></p>
+        <iframe src="https://www.youtube.com/embed/A5d69kQsKzo" allowfullscreen></iframe>
+        <p>Riley played me this one in that old red sedan he had while we were both totally toasted.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Doses & Mimosas</strong></p>
+        <iframe src="https://www.youtube.com/embed/E45fogGN_Y8" allowfullscreen></iframe>
+        <p>Butch played me this one in Fayetteville and it's always stuck.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>The Adults Are Talking - The Strokes</strong></p>
+        <iframe src="https://www.youtube.com/embed/ewOPQZZn4SY" allowfullscreen></iframe>
+        <p>Not much on this one, just like how chill it is.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Turbulent - Waterparks</strong></p>
+        <iframe src="https://www.youtube.com/embed/jEvVK3YKa2Q" allowfullscreen></iframe>
+        <p>Energy-packed song with catchy rhythms.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Fold Ya' Up Like A Blanket - Enjoy</strong></p>
+        <iframe src="https://www.youtube.com/embed/gYHsfcRU5x8" allowfullscreen></iframe>
+        <p>Creative lyrics and playful energy make this a fun listen.</p>
+    </div>
+</main>
+
+<footer>
+    <p>© InsideDani Music</p>
+</footer>
+
 </body>
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<img src="img/cat-cat-meme.gif" alt="vibin">
-<a href="https://www.insidedani.com">[BACK]</a>
-
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Little Dark Age - MGMT</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rtL5oMyBHPs"></iframe>
-<p>Very eerie song but when the chorus hits, it's like fireworks.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">You & Me - Disclosure</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ETEg-SB01QY"></iframe>
-<p>The energy is so strong and the message is very clear.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">The Salmon Dance - The Chemical Brothers</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dDj7DuHVV9E"></iframe>
-<p>I feel like someone showed me this a while ago back in high school.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Use of Time - 311</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/A5d69kQsKzo"></iframe>
-<p>Riley played me this one in that old red sedan he had while we were both totally toasted.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Doses & Mimosas</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/E45fogGN_Y8"></iframe>
-<p>Butch played me this one in Fayetteville and it's always stuck.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">The Adults Are Talking - The Strokes</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ewOPQZZn4SY"></iframe>
-<p>Not much on this one, just like how chill it is.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Turbulent - Waterparks</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jEvVK3YKa2Q"></iframe>
-<p>I'd unfuck you if I could.</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);">Fold Ya' Up Like A Blanket - Enjoy</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gYHsfcRU5x8"></iframe>
-<p>'Cause I'm the king of the crop,I'm the crème de la crème I'm the queen of the crown, I'm the crop to the crop And I'm not gonna stop, So go fuck right off</p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-
-<p style="color: hsla(0, 0%, 100%, 0.526);"></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/"></iframe>
-<p></p>
-  
-<a href="https://www.insidedani.com/music">[<<<]</a>
-<a href="https://www.insidedani.com/music2">[>>>]</a>
-<p></p>
 </html>
