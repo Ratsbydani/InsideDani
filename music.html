@@ -42,6 +42,7 @@
         font-size: 3rem;
         color: rgba(255,255,255,0.95);
         animation: fadeInDown 1.5s ease forwards;
+        margin-bottom: 1rem;
     }
 
     @keyframes fadeInDown {
@@ -49,11 +50,17 @@
         100% {opacity:1; transform: translateY(0);}
     }
 
+    header img {
+        max-width: 300px;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+    }
+
     nav {
         display: flex;
         justify-content: center;
         gap: 1rem;
-        margin: 1.5rem 0;
+        margin: 1rem 0;
         flex-wrap: wrap;
     }
 
@@ -96,13 +103,6 @@
         box-shadow: 0 15px 25px rgba(0,0,0,0.4);
     }
 
-    .music-card img {
-        max-width: 100%;
-        display: block;
-        margin-bottom: 0.5rem;
-        border-radius: 10px;
-    }
-
     .music-card iframe {
         width: 100%;
         height: 200px;
@@ -142,6 +142,7 @@
 
 <header>
     <h1>InsideDani Music</h1>
+    <img src="img/cat-cat-meme.gif" alt="vibin">
 </header>
 
 <nav>
@@ -149,22 +150,10 @@
 </nav>
 
 <main>
-    <!-- Images -->
-    <div class="music-card">
-        <img src="img/cat-cat-meme.gif" alt="vibin">
-    </div>
-    <div class="music-card">
-        <img src="img/cat-cat-meme.gif" alt="vibin">
-    </div>
-    <div class="music-card">
-        <img src="img/cat-cat-meme.gif" alt="vibin">
-    </div>
-
-    <!-- Songs -->
     <div class="music-card">
         <p><strong>Sp33din'/Swallowed My Key - Slater</strong></p>
         <iframe src="https://www.youtube.com/embed/PPWRREK2Mzg" allowfullscreen></iframe>
-        <p>Two songs in one video. Both of which are great to just cruise around listening to. For me, it really sets the vibes right for a night cruise. It's something about the energy that these two songs give off, very indie and have a solid beat. Slater was my top artist of 2024 on Spotify and to me it's very clear as to why.</p>
+        <p>Two songs in one video. Both of which are great to just cruise around listening to. For me, it really sets the vibes right for a night cruise. Very indie with a solid beat. Slater was my top artist of 2024 on Spotify.</p>
     </div>
 
     <div class="music-card">
@@ -176,34 +165,57 @@
     <div class="music-card">
         <p><strong>What Once Was - Her's</strong></p>
         <iframe src="https://www.youtube.com/embed/O-B-BBwfAWU" allowfullscreen></iframe>
-        <p>Yet another unique indie song, and my favorite as well. This song is actually super deep. The song is named "What Once Was" which perfectly mirrors the lyrics. My favorite lyrics read, "Baby, I've been there before, I was at the point where all I really wanted was someone, And now I'm still hanging on, I was at the end of every tether waiting for what once was." I think a lot of us can actually relate to this snippet. Holding onto the fraying tether of something or someone wishing you could have what once was.</p>
+        <p>Unique indie song, deep lyrics. The song is named "What Once Was" which mirrors the lyrics. "Baby, I've been there before... waiting for what once was." Many can relate to holding onto the fraying tether of something lost.</p>
     </div>
 
     <div class="music-card">
-        <p><strong>Turkey - Clock Tower(full album)</strong></p>
+        <p><strong>Turkey - Clock Tower (full album)</strong></p>
         <iframe src="https://www.youtube.com/embed/D4nCrSQVCVA" allowfullscreen></iframe>
-        <p>I found this on my for you page on 1/28/2025 and I really like the vibe. Just a little something I added to show off more of my taste.</p>
+        <p>I found this on my For You page on 1/28/2025 and I really like the vibe.</p>
     </div>
 
     <div class="music-card">
         <p><strong>Cemetery Gates - Pantera</strong></p>
         <iframe src="https://www.youtube.com/embed/RVMvART9kb8" allowfullscreen></iframe>
-        <p>This was the first song that I ever deemed my "Favorite". I remember the first time I heard it in my dad's truck back when we lived in South Dakota. The next day at school I asked everyone in my class if they had heard of it, most saying no so when we had computer lab I looked it up to show off to my friends lol. I got to see these guys in concert at the Walmart AMP which was really something. Sadly we had to leave a little early because I had Jude with me and he didn't want to stick around any longer so I said K.</p>
+        <p>The first song I ever deemed my "Favorite". Memorable experiences attached to it and a great live performance.</p>
     </div>
 
-    <!-- Continue wrapping all remaining songs in .music-card divs -->
-    <!-- Example for Lazy Eye -->
     <div class="music-card">
         <p><strong>Lazy Eye - Silversun Pickups</strong></p>
         <iframe src="https://www.youtube.com/embed/z-mxBDuRaZ8" allowfullscreen></iframe>
-        <p>I was actually shown this song by Jude. I think he introduced me to it as his dead mom's favorite song.</p>
+        <p>Introduced by a friend. A very memorable and emotional song.</p>
     </div>
 
-    <!-- Keep repeating this format for all remaining songs, images, and content -->
-    
+    <div class="music-card">
+        <p><strong>Sex Tape - Deftones</strong></p>
+        <iframe src="https://www.youtube.com/embed/f0pdwd0miqs" allowfullscreen></iframe>
+        <p>Floaty feeling song. Never gets too aggressive and stays chill. Classic Deftones energy.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Locket - Crumb</strong></p>
+        <iframe src="https://www.youtube.com/embed/BqnG_Ei35JE" allowfullscreen></iframe>
+        <p>Crumb makes ethereal, unique songs. Very distinct sound.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Ghostride - Crumb</strong></p>
+        <iframe src="https://www.youtube.com/embed/HS4aJ_51qNQ" allowfullscreen></iframe>
+        <p>Another Crumb song, first one I ever heard by them.</p>
+    </div>
+
+    <div class="music-card">
+        <p><strong>Harder, Better, Faster, Stronger - Daft Punk</strong></p>
+        <iframe src="https://www.youtube.com/embed/gAjR4_CbPpQ" allowfullscreen></iframe>
+        <p>This one just hits the ears the right way. Classic.</p>
+    </div>
+
+    <!-- Continue wrapping all remaining songs in .music-card divs following the same format -->
+
     <div class="music-card">
         <a href="https://www.insidedani.com/music1" target="_blank" style="color:#d71e9d; font-weight:bold; text-decoration:underline;">[>>>]</a>
     </div>
+
 </main>
 
 <footer>
