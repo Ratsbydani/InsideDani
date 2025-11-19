@@ -221,23 +221,7 @@
         top_left_room.addHotspot("Waterfall", waterfall_rect, waterfall_room);
         waterfall_room.addHotspot("Back", back_rect, top_left_room);
 
-        
         // ---- LOCKED DOOR CHAIN (from back left of room) ----
-
-// Room definitions (use clean filenames)
-        const locked_1_room = new Room(
-        "A Locked Door",
-        "Looks like you need a 3 digit code to get through here.",
-        "img/locked_door.jpg"
-        );
-
-        const locked_1_open_room = new Room(
-        "Unlocked Door",
-        "You've successfully unlocked the door.",
-        "img/locked_door_open.jpg"
-        );
-
-// Hotspots – NOTICE: variable names now match!
         const back_left_door_rect = { x: 350, y: 180, w: 150, h: 230 };
         back_left_room.addHotspot("To Locked Door", back_left_door_rect, locked_1_room);
 
