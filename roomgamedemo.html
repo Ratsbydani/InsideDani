@@ -303,8 +303,6 @@
 
       let currentRoom = createWorld();
       let message = "Click on things to explore.";
-      let enteringCode = false;
-      let codeInput = "";
       let lockedDoorUnlocked = false;
       let videoPlaying = false;
       let mousePos = { x: WIDTH / 2, y: HEIGHT / 2 };
@@ -346,27 +344,26 @@
 
         const hotspot = currentRoom.getClickedHotspot(pos);
 
-        if (enteringCode) {
-          if (hotspot && hotspot.name === "Back") {
-            enteringCode = false;
-            codeInput = "";
-            message = "You step away from the door lock.";
-            if (hotspot.targetRoom) currentRoom = hotspot.targetRoom;
-          }
-          return;
-        }
-
         if (hotspot) {
           if (hotspot.name === "Locked Door") {
-            if (lockedDoorUnlocked) {
+            // Prompt-based code entry instead of "enteringCode" state
+            if (!lockedDoorUnlocked) {
+              const userCode = prompt(`Enter the ${SECRET_CODE.length}-digit code:`);
+              if (userCode === null) {
+                message = "You step away from the door lock.";
+              } else if (userCode === SECRET_CODE) {
+                lockedDoorUnlocked = true;
+                message = "You hear a click. The door is now unlocked.";
+                playVideo(SUCCESS_VIDEO);
+              } else {
+                message = "The code is incorrect.";
+                playVideo(FAIL_VIDEO);
+              }
+            } else {
               if (hotspot.targetRoom) {
                 currentRoom = hotspot.targetRoom;
                 message = "You go through the now-unlocked door.";
               }
-            } else {
-              enteringCode = true;
-              codeInput = "";
-              message = `The door is locked. Enter the ${SECRET_CODE.length}-digit code.`;
             }
           } else {
             if (hotspot.targetRoom) {
@@ -383,43 +380,10 @@
       });
 
       window.addEventListener("keydown", (e) => {
-        if (videoPlaying) {
-          if (e.key === "Escape") {
-            videoPlayer.pause();
-            videoPlayer.style.display = "none";
-            videoPlaying = false;
-          }
-          return;
-        }
-
-        if (enteringCode) {
-          if (e.key === "Escape") {
-            enteringCode = false;
-            codeInput = "";
-            message = "You step away from the door lock.";
-          } else if (e.key === "Backspace") {
-            codeInput = codeInput.slice(0, -1);
-          } else if (e.key === "Enter") {
-            if (codeInput === SECRET_CODE) {
-              if (!lockedDoorUnlocked) {
-                lockedDoorUnlocked = true;
-                enteringCode = false;
-                message = "You hear a click. The door is now unlocked.";
-                codeInput = "";
-                playVideo(SUCCESS_VIDEO);
-              } else {
-                enteringCode = false;
-                codeInput = "";
-                message = "The door is already unlocked.";
-              }
-            } else {
-              message = "The code is incorrect.";
-              codeInput = "";
-              playVideo(FAIL_VIDEO);
-            }
-          } else if (/^[0-9]$/.test(e.key) && codeInput.length < SECRET_CODE.length) {
-            codeInput += e.key;
-          }
+        if (videoPlaying && e.key === "Escape") {
+          videoPlayer.pause();
+          videoPlayer.style.display = "none";
+          videoPlaying = false;
         }
       });
 
@@ -463,12 +427,6 @@
 
         ctx.fillStyle = "rgb(200, 200, 0)";
         wrapText(ctx, message, 20, 90, WIDTH - 40, 20);
-
-        if (enteringCode) {
-          const bullets = "•".repeat(codeInput.length);
-          ctx.fillStyle = "rgb(0, 255, 0)";
-          ctx.fillText("Code: " + bullets, 20, 120);
-        }
 
         if (SHOW_HOTSPOTS) {
           ctx.strokeStyle = "white";
