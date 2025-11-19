@@ -51,8 +51,8 @@
       const SHOW_HOTSPOTS = false;
       const SECRET_CODE = "137";
 
-      const SUCCESS_VIDEO = "img/unlock first door.mp4";
-      const FAIL_VIDEO    = "img/unlock first door fail.mp4";
+      const SUCCESS_VIDEO = "img/unlock first .mp4";
+      const FAIL_VIDEO    = "img/unlock first  fail.mp4";
 
       class Hotspot {
         constructor(name, rect, targetRoom = null, inspectText = null) {
@@ -127,16 +127,16 @@
           "img/waterfall.jpg"
         );
 
-        const locked_door1_room = new Room(
-          "A Locked Door",
+        const locked_1_room = new Room(
+          "A Locked ",
           "Looks like you need a 3 digit code to get through here.",
-          "img/locked door1.jpg"
+          "img/locked 1.jpg"
         );
 
-        const locked_door1_open_room = new Room(
-          "Unlocked Door",
-          "You've successfully unlocked the door.",
-          "img/locked door1 open.jpg"
+        const locked_1_open_room = new Room(
+          "Unlocked ",
+          "You've successfully unlocked the .",
+          "img/locked 1 open.jpg"
         );
 
         const hallway1_room = new Room(
@@ -222,15 +222,15 @@
         waterfall_room.addHotspot("Back", back_rect, top_left_room);
 
         // Locked door chain
-        const back_left_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        const back_left_door_rect = { x: 350, y: 180, w: 150, h: 230 };
         back_left_room.addHotspot("To Locked Door", back_left_door_rect, locked_door1_room);
 
-        const locked_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        const locked_door_rect = { x: 330, y: 100, w: 320, h: 450 };
         locked_door1_room.addHotspot("Locked Door", locked_door_rect, locked_door1_open_room);
 
         locked_door1_room.addHotspot("Back", back_rect, back_left_room);
 
-        const open_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        const open_door_rect = { x: 250, y: 50, w: 250, h: 450 };
         locked_door1_open_room.addHotspot("Open Doorway", open_door_rect, hallway1_room);
 
         locked_door1_open_room.addHotspot("Back", back_rect, locked_door1_room);
