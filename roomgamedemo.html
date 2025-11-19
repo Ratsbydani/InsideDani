@@ -221,20 +221,21 @@
         top_left_room.addHotspot("Waterfall", waterfall_rect, waterfall_room);
         waterfall_room.addHotspot("Back", back_rect, top_left_room);
 
+        
         // Locked door chain
         const back_left_door_rect = { x: 350, y: 180, w: 150, h: 230 };
-        back_left_room.addHotspot("To Locked Door", back_left_door_rect, locked_door1_room);
+        back_left_room.addHotspot("To Locked Door", back_left_door_rect, locked_1_room);
 
         const locked_door_rect = { x: 330, y: 100, w: 320, h: 450 };
-        locked_door1_room.addHotspot("Locked Door", locked_door_rect, locked_door1_open_room);
+        locked_1_room.addHotspot("Locked Door", locked_door_rect, locked_1_open_room);
 
-        locked_door1_room.addHotspot("Back", back_rect, back_left_room);
+        locked_1_room.addHotspot("Back", back_rect, back_left_room);
 
         const open_door_rect = { x: 250, y: 50, w: 250, h: 450 };
-        locked_door1_open_room.addHotspot("Open Doorway", open_door_rect, hallway1_room);
+        locked_1_open_room.addHotspot("Open Doorway", open_door_rect, hallway1_room);
 
-        locked_door1_open_room.addHotspot("Back", back_rect, locked_door1_room);
-        hallway1_room.addHotspot("Back", back_rect, locked_door1_open_room);
+        locked_1_open_room.addHotspot("Back", back_rect, locked_1_room);
+        hallway1_room.addHotspot("Back", back_rect, locked_1_open_room);
 
         // Fake trees
         const fake_tree1_rect = { x: 110, y: 260, w: 100, h: 160 };
