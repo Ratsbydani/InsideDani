@@ -44,165 +44,467 @@
   </div>
 
   <script>
-    // ---------------------------------------------------------------------
-    // CONFIG
-    // ---------------------------------------------------------------------
-    const WIDTH = 800;
-    const HEIGHT = 600;
-    const SHOW_HOTSPOTS = false;
-    const SECRET_CODE = "137";
+    // Wrap everything so it only runs after page is loaded
+    window.addEventListener("load", function () {
+      const WIDTH = 800;
+      const HEIGHT = 600;
+      const SHOW_HOTSPOTS = false;
+      const SECRET_CODE = "137";
 
-    // Now using img/ folder for videos:
-    const SUCCESS_VIDEO = "img/unlock first door.mp4";
-    const FAIL_VIDEO    = "img/unlock first door fail.mp4";
+      const SUCCESS_VIDEO = "img/unlock first door.mp4";
+      const FAIL_VIDEO    = "img/unlock first door fail.mp4";
 
-    // ---------------------------------------------------------------------
-    // BASIC CLASSES
-    // ---------------------------------------------------------------------
-    class Hotspot {
-      constructor(name, rect, targetRoom = null, inspectText = null) {
-        this.name = name;
-        this.rect = rect;
-        this.targetRoom = targetRoom;
-        this.inspectText = inspectText;
+      class Hotspot {
+        constructor(name, rect, targetRoom = null, inspectText = null) {
+          this.name = name;
+          this.rect = rect; // {x,y,w,h}
+          this.targetRoom = targetRoom;
+          this.inspectText = inspectText;
+        }
+        contains(x, y) {
+          return (
+            x >= this.rect.x &&
+            x <= this.rect.x + this.rect.w &&
+            y >= this.rect.y &&
+            y <= this.rect.y + this.rect.h
+          );
+        }
       }
-      contains(x, y) {
-        return (
-          x >= this.rect.x &&
-          x <= this.rect.x + this.rect.w &&
-          y >= this.rect.y &&
-          y <= this.rect.y + this.rect.h
+
+      class Room {
+        constructor(name, description, imagePath) {
+          this.name = name;
+          this.description = description;
+          this.image = new Image();
+          this.image.src = imagePath;
+          this.hotspots = [];
+        }
+        addHotspot(name, rect, targetRoom = null, inspectText = null) {
+          this.hotspots.push(new Hotspot(name, rect, targetRoom, inspectText));
+        }
+        getClickedHotspot(pos) {
+          for (const hs of this.hotspots) {
+            if (hs.contains(pos.x, pos.y)) return hs;
+          }
+          return null;
+        }
+      }
+
+      function loadImage(filename) {
+        const img = new Image();
+        img.src = "img/" + filename;
+        return img;
+      }
+
+      function createWorld() {
+        const top_right_room = new Room(
+          "Front right of room",
+          "You are facing the front right of the room.",
+          "img/top right of room.jpg"
         );
+
+        const top_left_room = new Room(
+          "Front left of room",
+          "You are facing the top left of the room.",
+          "img/top left of room.jpg"
+        );
+
+        const back_left_room = new Room(
+          "Back left of room",
+          "You are facing the the back left of the room.",
+          "img/back left of room.jpg"
+        );
+
+        const back_right_room = new Room(
+          "Back right of room",
+          "You are facing the back right of the room.",
+          "img/back right of room.jpg"
+        );
+
+        const waterfall_room = new Room(
+          "Examine: Waterfall Decoration",
+          "The 3 circle indentions behind the fall catch your eye.",
+          "img/waterfall.jpg"
+        );
+
+        const locked_door1_room = new Room(
+          "A Locked Door",
+          "Looks like you need a 3 digit code to get through here.",
+          "img/locked door1.jpg"
+        );
+
+        const locked_door1_open_room = new Room(
+          "Unlocked Door",
+          "You've successfully unlocked the door.",
+          "img/locked door1 open.jpg"
+        );
+
+        const hallway1_room = new Room(
+          "A Never-Ending Hallway",
+          "Eerie",
+          "img/hallway1.jpg"
+        );
+
+        const fake_tree1_room = new Room(
+          "First Fake Tree",
+          "Just a decorative fake tree.",
+          "img/fake tree1.jpg"
+        );
+
+        const fake_tree1_inside_room = new Room(
+          "Examine: First Fake Tree",
+          "What's this?",
+          "img/fake tree1 inside.jpg"
+        );
+
+        const fake_tree2_room = new Room(
+          "Second Fake Tree",
+          "Another fake tree stands here.",
+          "img/fake tree2.jpg"
+        );
+
+        const fake_tree2_inside_room = new Room(
+          "Examine: Second Fake Tree",
+          "Not a lot going on here, or anything at all.",
+          "img/fake tree2 inside.jpg"
+        );
+
+        const fake_tree3_room = new Room(
+          "Third Fake Tree",
+          "Just some basic fake tree.",
+          "img/fake tree3.jpg"
+        );
+
+        const fake_tree3_inside_room = new Room(
+          "Examine: Third Fake Tree",
+          "Just some fake dirt for decoration.",
+          "img/fake tree3 inside.jpg"
+        );
+
+        const window_view_room = new Room(
+          "Looking Out the Window",
+          "The scenery is eerie here.",
+          "img/room window view.jpg"
+        );
+
+        const desk_view_room = new Room(
+          "Looking at the Desk",
+          "You examine the desk up close.",
+          "img/room desk view.jpg"
+        );
+
+        const picture_view_room = new Room(
+          "Looking at the Picture",
+          "You study the image and how bizarre it is.",
+          "img/room picture view.jpg"
+        );
+
+        const left_nav_rect  = { x: 20, y: HEIGHT / 2 - 50, w: 80,  h: 100 };
+        const right_nav_rect = { x: WIDTH - 100, y: HEIGHT / 2 - 50, w: 80, h: 100 };
+        const back_rect      = { x: 20, y: HEIGHT - 80, w: 150, h: 50 };
+
+        // 4-room loop
+        top_right_room.addHotspot("Left",  left_nav_rect,  top_left_room);
+        top_right_room.addHotspot("Right", right_nav_rect, back_right_room);
+
+        top_left_room.addHotspot("Left",  left_nav_rect,  back_left_room);
+        top_left_room.addHotspot("Right", right_nav_rect, top_right_room);
+
+        back_left_room.addHotspot("Left",  left_nav_rect,  back_right_room);
+        back_left_room.addHotspot("Right", right_nav_rect, top_left_room);
+
+        back_right_room.addHotspot("Left",  left_nav_rect,  top_right_room);
+        back_right_room.addHotspot("Right", right_nav_rect, back_left_room);
+
+        // Waterfall
+        const waterfall_rect = { x: 300, y: 220, w: 200, h: 150 };
+        top_left_room.addHotspot("Waterfall", waterfall_rect, waterfall_room);
+        waterfall_room.addHotspot("Back", back_rect, top_left_room);
+
+        // Locked door chain
+        const back_left_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        back_left_room.addHotspot("To Locked Door", back_left_door_rect, locked_door1_room);
+
+        const locked_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        locked_door1_room.addHotspot("Locked Door", locked_door_rect, locked_door1_open_room);
+
+        locked_door1_room.addHotspot("Back", back_rect, back_left_room);
+
+        const open_door_rect = { x: 500, y: 200, w: 150, h: 200 };
+        locked_door1_open_room.addHotspot("Open Doorway", open_door_rect, hallway1_room);
+
+        locked_door1_open_room.addHotspot("Back", back_rect, locked_door1_room);
+        hallway1_room.addHotspot("Back", back_rect, locked_door1_open_room);
+
+        // Fake trees
+        const fake_tree1_rect = { x: 110, y: 260, w: 100, h: 160 };
+        const fake_tree2_rect = { x: 340, y: 260, w: 120, h: 160 };
+        const fake_tree3_rect = { x: 530, y: 260, w: 120, h: 160 };
+
+        back_right_room.addHotspot("Fake Tree 1", fake_tree1_rect, fake_tree1_room);
+        back_right_room.addHotspot("Fake Tree 2", fake_tree2_rect, fake_tree2_room);
+        back_right_room.addHotspot("Fake Tree 3", fake_tree3_rect, fake_tree3_room);
+
+        fake_tree1_room.addHotspot("Inside Tree 1", { x: 300, y: 260, w: 200, h: 160 }, fake_tree1_inside_room);
+        fake_tree1_room.addHotspot("Back", back_rect, back_right_room);
+        fake_tree1_inside_room.addHotspot("Back", back_rect, fake_tree1_room);
+
+        fake_tree2_room.addHotspot("Inside Tree 2", { x: 300, y: 260, w: 200, h: 160 }, fake_tree2_inside_room);
+        fake_tree2_room.addHotspot("Back", back_rect, back_right_room);
+        fake_tree2_inside_room.addHotspot("Back", back_rect, fake_tree2_room);
+
+        fake_tree3_room.addHotspot("Inside Tree 3", { x: 300, y: 260, w: 200, h: 160 }, fake_tree3_inside_room);
+        fake_tree3_room.addHotspot("Back", back_rect, back_right_room);
+        fake_tree3_inside_room.addHotspot("Back", back_rect, fake_tree3_room);
+
+        // Top-right extra
+        const window_rect_tr = { x: 550, y: 200, w: 190, h: 70 };
+        const desk_rect_tr   = { x: 150, y: 270, w: 230, h: 130 };
+        const pic_rect_tr    = { x: 335, y: 210, w: 60,  h: 65 };
+
+        top_right_room.addHotspot("Window View", window_rect_tr, window_view_room);
+        top_right_room.addHotspot("Desk View",   desk_rect_tr,   desk_view_room);
+        top_right_room.addHotspot("Picture View", pic_rect_tr,   picture_view_room);
+
+        window_view_room.addHotspot("Back", back_rect, top_right_room);
+        desk_view_room.addHotspot("Back", back_rect, top_right_room);
+        picture_view_room.addHotspot("Back", back_rect, top_right_room);
+
+        // Desk inspect
+        const strange_object_rect = { x: 35,  y: 330, w: 100, h: 80 };
+        const flower_vase_rect    = { x: 340, y: 200, w: 120, h: 160 };
+
+        desk_view_room.addHotspot(
+          "Strange Object",
+          strange_object_rect,
+          null,
+          "A tree, river, and bars of gold are etched into it along with the number 7."
+        );
+
+        desk_view_room.addHotspot(
+          "Flower Vase",
+          flower_vase_rect,
+          null,
+          "A delicate flower vase. It looks recently placed here."
+        );
+
+        return top_right_room;
       }
-    }
 
-    class Room {
-      constructor(name, description, imagePath) {
-        this.name = name;
-        this.description = description;
-        this.image = new Image();
-        this.image.src = imagePath;
-        this.hotspots = [];
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+      const videoPlayer = document.getElementById("videoPlayer");
+
+      const back_button_img = loadImage("back_button.jpg");
+      const left_arrow_img  = loadImage("left arrow.jpg");
+      const right_arrow_img = loadImage("right arrow.jpg");
+      const cursor_img      = loadImage("cursor.jpg");
+      const magnify_img     = loadImage("magnefying_glass.jpg");
+
+      let currentRoom = createWorld();
+      let message = "Click on things to explore.";
+      let enteringCode = false;
+      let codeInput = "";
+      let lockedDoorUnlocked = false;
+      let videoPlaying = false;
+      let mousePos = { x: WIDTH / 2, y: HEIGHT / 2 };
+
+      function playVideo(path) {
+        videoPlayer.src = path;
+        videoPlayer.style.display = "block";
+        videoPlayer.currentTime = 0;
+        videoPlaying = true;
+        videoPlayer.play().catch(err => {
+          console.error("Video play error:", err);
+          videoPlayer.style.display = "none";
+          videoPlaying = false;
+        });
       }
-      addHotspot(name, rect, targetRoom = null, inspectText = null) {
-        this.hotspots.push(new Hotspot(name, rect, targetRoom, inspectText));
+
+      videoPlayer.addEventListener("ended", () => {
+        videoPlayer.style.display = "none";
+        videoPlaying = false;
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = WIDTH / rect.width;
+        const scaleY = HEIGHT / rect.height;
+        mousePos.x = (e.clientX - rect.left) * scaleX;
+        mousePos.y = (e.clientY - rect.top) * scaleY;
+      });
+
+      canvas.addEventListener("click", (e) => {
+        if (videoPlaying) return;
+
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = WIDTH / rect.width;
+        const scaleY = HEIGHT / rect.height;
+        const x = (e.clientX - rect.left) * scaleX;
+        const y = (e.clientY - rect.top) * scaleY;
+        const pos = { x, y };
+
+        const hotspot = currentRoom.getClickedHotspot(pos);
+
+        if (enteringCode) {
+          if (hotspot && hotspot.name === "Back") {
+            enteringCode = false;
+            codeInput = "";
+            message = "You step away from the door lock.";
+            if (hotspot.targetRoom) currentRoom = hotspot.targetRoom;
+          }
+          return;
+        }
+
+        if (hotspot) {
+          if (hotspot.name === "Locked Door") {
+            if (lockedDoorUnlocked) {
+              if (hotspot.targetRoom) {
+                currentRoom = hotspot.targetRoom;
+                message = "You go through the now-unlocked door.";
+              }
+            } else {
+              enteringCode = true;
+              codeInput = "";
+              message = `The door is locked. Enter the ${SECRET_CODE.length}-digit code.`;
+            }
+          } else {
+            if (hotspot.targetRoom) {
+              currentRoom = hotspot.targetRoom;
+              message = `You go to: ${hotspot.name}`;
+            }
+            if (hotspot.inspectText) {
+              message = hotspot.inspectText;
+            }
+          }
+        } else {
+          message = "You don't notice anything special there.";
+        }
+      });
+
+      window.addEventListener("keydown", (e) => {
+        if (videoPlaying) {
+          if (e.key === "Escape") {
+            videoPlayer.pause();
+            videoPlayer.style.display = "none";
+            videoPlaying = false;
+          }
+          return;
+        }
+
+        if (enteringCode) {
+          if (e.key === "Escape") {
+            enteringCode = false;
+            codeInput = "";
+            message = "You step away from the door lock.";
+          } else if (e.key === "Backspace") {
+            codeInput = codeInput.slice(0, -1);
+          } else if (e.key === "Enter") {
+            if (codeInput === SECRET_CODE) {
+              if (!lockedDoorUnlocked) {
+                lockedDoorUnlocked = true;
+                enteringCode = false;
+                message = "You hear a click. The door is now unlocked.";
+                codeInput = "";
+                playVideo(SUCCESS_VIDEO);
+              } else {
+                enteringCode = false;
+                codeInput = "";
+                message = "The door is already unlocked.";
+              }
+            } else {
+              message = "The code is incorrect.";
+              codeInput = "";
+              playVideo(FAIL_VIDEO);
+            }
+          } else if (/^[0-9]$/.test(e.key) && codeInput.length < SECRET_CODE.length) {
+            codeInput += e.key;
+          }
+        }
+      });
+
+      function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+        const words = text.split(" ");
+        let line = "";
+        for (let n = 0; n < words.length; n++) {
+          const testLine = line + words[n] + " ";
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxWidth && n > 0) {
+            ctx.fillText(line, x, y);
+            line = words[n] + " ";
+            y += lineHeight;
+          } else {
+            line = testLine;
+          }
+        }
+        ctx.fillText(line, x, y);
       }
-      getClickedHotspot(pos) {
-        return this.hotspots.find(hs => hs.contains(pos.x, pos.y)) || null;
+
+      function draw() {
+        // background
+        if (currentRoom.image && currentRoom.image.complete) {
+          ctx.drawImage(currentRoom.image, 0, 0, WIDTH, HEIGHT);
+        } else {
+          ctx.fillStyle = "black";
+          ctx.fillRect(0, 0, WIDTH, HEIGHT);
+        }
+
+        // overlay
+        ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+        ctx.fillRect(0, 0, WIDTH, 130);
+
+        ctx.fillStyle = "white";
+        ctx.font = "bold 24px sans-serif";
+        ctx.fillText(currentRoom.name, 20, 30);
+
+        ctx.font = "16px sans-serif";
+        ctx.fillStyle = "rgb(220, 220, 220)";
+        ctx.fillText(currentRoom.description, 20, 60);
+
+        ctx.fillStyle = "rgb(200, 200, 0)";
+        wrapText(ctx, message, 20, 90, WIDTH - 40, 20);
+
+        if (enteringCode) {
+          const bullets = "•".repeat(codeInput.length);
+          ctx.fillStyle = "rgb(0, 255, 0)";
+          ctx.fillText("Code: " + bullets, 20, 120);
+        }
+
+        if (SHOW_HOTSPOTS) {
+          ctx.strokeStyle = "white";
+          ctx.font = "14px sans-serif";
+          for (const hs of currentRoom.hotspots) {
+            ctx.fillStyle = "rgba(0,0,0,0.35)";
+            ctx.fillRect(hs.rect.x, hs.rect.y, hs.rect.w, hs.rect.h);
+            ctx.strokeRect(hs.rect.x, hs.rect.y, hs.rect.w, hs.rect.h);
+            ctx.fillStyle = "white";
+            ctx.fillText(hs.name, hs.rect.x + 5, hs.rect.y + 15);
+          }
+        } else {
+          for (const hs of currentRoom.hotspots) {
+            if (hs.name === "Back" && back_button_img.complete) {
+              ctx.drawImage(back_button_img, hs.rect.x, hs.rect.y, hs.rect.w, hs.rect.h);
+            } else if (hs.name === "Left" && left_arrow_img.complete) {
+              ctx.drawImage(left_arrow_img, hs.rect.x, hs.rect.y, hs.rect.w, hs.rect.h);
+            } else if (hs.name === "Right" && right_arrow_img.complete) {
+              ctx.drawImage(right_arrow_img, hs.rect.x, hs.rect.y, hs.rect.w, hs.rect.h);
+            }
+          }
+        }
+
+        const hovered = currentRoom.getClickedHotspot(mousePos);
+        const cursorImg = hovered ? magnify_img : cursor_img;
+        if (cursorImg && cursorImg.complete) {
+          const cw = cursorImg.width;
+          const ch = cursorImg.height;
+          ctx.drawImage(cursorImg, mousePos.x - cw / 2, mousePos.y - ch / 2);
+        }
+
+        requestAnimationFrame(draw);
       }
-    }
 
-    // ---------------------------------------------------------------------
-    // IMAGE LOADER (now ALL from /img/)
-    // ---------------------------------------------------------------------
-    function loadImage(filename) {
-      const img = new Image();
-      img.src = "img/" + filename;
-      return img;
-    }
-
-    // ---------------------------------------------------------------------
-    // WORLD CREATION
-    // ---------------------------------------------------------------------
-    function createWorld() {
-      const top_right_img      = loadImage("top right of room.jpg");
-      const top_left_img       = loadImage("top left of room.jpg");
-      const back_left_img      = loadImage("back left of room.jpg");
-      const back_right_img     = loadImage("back right of room.jpg");
-
-      const waterfall_img      = loadImage("waterfall.jpg");
-      const locked_door1_img        = loadImage("locked door1.jpg");
-      const locked_door1_open_img   = loadImage("locked door1 open.jpg");
-      const hallway1_img            = loadImage("hallway1.jpg");
-
-      const fake_tree1_img          = loadImage("fake tree1.jpg");
-      const fake_tree1_inside_img   = loadImage("fake tree1 inside.jpg");
-      const fake_tree2_img          = loadImage("fake tree2.jpg");
-      const fake_tree2_inside_img   = loadImage("fake tree2 inside.jpg");
-      const fake_tree3_img          = loadImage("fake tree3.jpg");
-      const fake_tree3_inside_img   = loadImage("fake tree3 inside.jpg");
-
-      const window_view_img   = loadImage("room window view.jpg");
-      const desk_view_img     = loadImage("room desk view.jpg");
-      const picture_view_img  = loadImage("room picture view.jpg");
-
-      const top_right_room = new Room("Front right of room",
-        "You are facing the front right of the room.",
-        "img/top right of room.jpg");
-
-      const top_left_room = new Room("Front left of room",
-        "You are facing the top left of the room.",
-        "img/top left of room.jpg");
-
-      const back_left_room = new Room("Back left of room",
-        "You are facing the the back left of the room.",
-        "img/back left of room.jpg");
-
-      const back_right_room = new Room("Back right of room",
-        "You are facing the back right of the room.",
-        "img/back right of room.jpg");
-
-      const waterfall_room = new Room("Examine: Waterfall Decoration",
-        "The 3 circle indentions behind the fall catch your eye.",
-        "img/waterfall.jpg");
-
-      const locked_door1_room = new Room("A Locked Door",
-        "Looks like you need a 3 digit code.",
-        "img/locked door1.jpg");
-
-      const locked_door1_open_room = new Room("Unlocked Door",
-        "You've successfully unlocked the door.",
-        "img/locked door1 open.jpg");
-
-      const hallway1_room = new Room("A Never-Ending Hallway",
-        "Eerie",
-        "img/hallway1.jpg");
-
-      const fake_tree1_room = new Room("First Fake Tree",
-        "Just a decorative fake tree.",
-        "img/fake tree1.jpg");
-
-      const fake_tree1_inside_room = new Room("Examine: First Fake Tree",
-        "What's this?",
-        "img/fake tree1 inside.jpg");
-
-      const fake_tree2_room = new Room("Second Fake Tree",
-        "Another fake tree stands here.",
-        "img/fake tree2.jpg");
-
-      const fake_tree2_inside_room = new Room("Examine: Second Fake Tree",
-        "Nothing going on here.",
-        "img/fake tree2 inside.jpg");
-
-      const fake_tree3_room = new Room("Third Fake Tree",
-        "Just a basic fake tree.",
-        "img/fake tree3.jpg");
-
-      const fake_tree3_inside_room = new Room("Examine: Third Fake Tree",
-        "Just some fake dirt.",
-        "img/fake tree3 inside.jpg");
-
-      const window_view_room = new Room("Looking Out the Window",
-        "The scenery is eerie here.",
-        "img/room window view.jpg");
-
-      const desk_view_room = new Room("Looking at the Desk",
-        "You examine the desk up close.",
-        "img/room desk view.jpg");
-
-      const picture_view_room = new Room("Looking at the Picture",
-        "You study how bizarre it is.",
-        "img/room picture view.jpg");
-
-      // navigation & interactions (unchanged code)
-      // ...
-
-      return top_right_room;
-    }
-
-    // ---------------------------------------------------------
-    // (All remaining logic unchanged — only image paths updated)
-    // ---------------------------------------------------------
+      requestAnimationFrame(draw);
+    });
   </script>
 </body>
 </html>
